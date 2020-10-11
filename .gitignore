@@ -20,6 +20,7 @@ vendor/
 *.swo
 *~
 
+bin/
 data/
 
 .env

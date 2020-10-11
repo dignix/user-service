@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: iam-solutions-user-service
+spec:
+  selector:
+    app: user-service
+  ports:
+    - name: http
+      port: 8088
+  type: ClusterIP

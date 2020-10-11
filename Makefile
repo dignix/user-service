@@ -1,6 +1,6 @@
 .PHONY: build
 build:
-	go build -o ./bin/app main.go
+	go build -o ./bin/app cmd/server/main.go
 
 .PHONY: run
 run:
@@ -35,7 +35,7 @@ docker-build:
 
 .PHONY: docker-run
 docker-run:
-	docker run -d -p 8089:8089 --name iam-solutions-user-service-container hzhyvinskyi/iam-solutions-user-service:1.0.0
+	docker run -d -p 8087:8087 --name iam-solutions-user-service-container hzhyvinskyi/iam-solutions-user-service:1.0.0
 
 .PHONY: docker-push
 docker-push:
