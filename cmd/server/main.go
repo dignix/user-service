@@ -11,7 +11,9 @@ import (
 )
 
 func main() {
-	lis, err := net.Listen("tcp", "localhost:8089")
+	tcpSockAddr := "localhost:8089"
+
+	lis, err := net.Listen("tcp", tcpSockAddr)
 	if err != nil {
 		log.Fatalf("Failed to listen: %v\n", err)
 	}
@@ -22,6 +24,7 @@ func main() {
 
 	pb.RegisterUserServiceServer(grpcServer, userServiceServer)
 
+	log.Printf("User service is running on %s\n", tcpSockAddr)
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Fatalf("Failed to serve: %v\n", err)
 	}

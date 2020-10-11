@@ -25,6 +25,10 @@ test-cover:
 format:
 	gofmt -w ./..
 
+.PHONY: gen
+gen:
+	protoc -I api/v1/pb --go_out=plugins=grpc:. --grpc-gateway_out=:. --swagger_out=:api/v1 user.proto
+
 .PHONY: docker-build
 docker-build:
 	docker build -t hzhyvinskyi/iam-solutions-user-service:1.0.0 .

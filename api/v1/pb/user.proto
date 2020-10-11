@@ -4,6 +4,7 @@ package api;
 
 option go_package = "api/v1/pb";
 
+import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 
 message User {
@@ -22,8 +23,16 @@ message User {
 }
 
 service UserService {
-    rpc Get(GetRequest) returns (GetResponse) {};
-    rpc GetAll(GetAllRequest) returns (stream GetAllResponse) {};
+    rpc Get(GetRequest) returns (GetResponse) {
+        option (google.api.http) = {
+            get: "/v1/users/{id}"
+        };
+    };
+    rpc GetAll(GetAllRequest) returns (stream GetAllResponse) {
+        option (google.api.http) = {
+            get: "/v1/users"
+        };
+    };
 }
 
 message GetRequest {
